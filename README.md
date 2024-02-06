@@ -1,4 +1,4 @@
-# Seg-Mask-to-Binary-Matrix
+# Seg-Mask-to-Binary-Array
 Creates a binary matrix .txt file from a segmentation mask. 
 Intended primarily for use for CVAT, as binary matrix creation when exporting as Segmentation Mask 1.1 is not currently supported.
 
