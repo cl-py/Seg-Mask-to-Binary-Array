@@ -2,10 +2,14 @@ import os
 
 from PIL import Image
 
+#------------------------------------#
+#Appends binary pixel values to array.
+#------------------------------------#
 def writeRGBArray(image):
     image = image.convert("RGB")
     width, height = image.size
     rgb_values = []
+    #iterates through entire image pixel by pixel.
     for y in range(height):
         for x in range(width):
             r, g, b = image.getpixel((x, y))
@@ -17,15 +21,20 @@ def writeRGBArray(image):
                 rgb_values.append(1)
     return rgb_values
     
-directory = "INSERT FOLDER PATH HERE"
+#------------------------------------#
+#Specify image path and output directory here.
+#------------------------------------#
+image_path = r""
+output_dir = r""
+
 numImg = 1
 rgb_values = []
-for filename in os.listdir(directory):
+for filename in os.listdir(image_path):
     if filename.endswith(".png"):
-        filepath = os.path.join(directory, filename)
+        filepath = os.path.join(image_path, filename)
         try:
             image = Image.open(filepath)
-            outfile = f"frame{numImg}.txt"
+            outfile = os.path.join(output_dir, f"frame{numImg}.txt")
             numImg += 1
             with open(outfile, "w") as f:
                 f.write(" ".join(map(str, writeRGBArray(image))))
@@ -34,3 +43,6 @@ for filename in os.listdir(directory):
             
 print("Done. Quitting program...")
     
+
+
+            
